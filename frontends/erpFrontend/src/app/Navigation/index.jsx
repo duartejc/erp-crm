@@ -18,6 +18,7 @@ import {
   CreditCardOutlined,
   BankOutlined,
 } from '@ant-design/icons';
+import Translator from '@/components/I18n/Translator';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -60,40 +61,40 @@ export default function Navigation() {
         <Menu mode="inline">
           <Menu.Item key={'Dashboard'} icon={<DashboardOutlined />}>
             <Link to={'/'} />
-            Dashboard
+            <Translator path="navigation.menu.dashboard"/>
           </Menu.Item>
           <Menu.Item key={'Customer'} icon={<CustomerServiceOutlined />}>
             <Link to={'/customer'} />
-            Customer
+            <Translator path="navigation.menu.customer"/>
           </Menu.Item>
           <Menu.Item key={'Invoice'} icon={<FileTextOutlined />}>
             <Link to={'/invoice'} />
-            Invoice
+            <Translator path="navigation.menu.invoice"/>
           </Menu.Item>
           <Menu.Item key={'Quote'} icon={<FileSyncOutlined />}>
             <Link to={'/quote'} />
-            Quote
+            <Translator path="navigation.menu.quote"/>
           </Menu.Item>
           <Menu.Item key={'PaymentInvoice'} icon={<CreditCardOutlined />}>
             <Link to={'/payment/invoice'} />
-            Payment Invoice
+            <Translator path="navigation.menu.paymentInvoice"/>
           </Menu.Item>
           <Menu.Item key={'Employee'} icon={<UserOutlined />}>
             <Link to={'/employee'} />
-            Employee
+            <Translator path="navigation.menu.employee"/>
           </Menu.Item>
           <Menu.Item key={'Admin'} icon={<TeamOutlined />}>
             <Link to={'/admin'} />
-            Admin
+            <Translator path="navigation.menu.admin"/>
           </Menu.Item>
           <SubMenu key={'Settings'} icon={<SettingOutlined />} title={'Settings'}>
             <Menu.Item key={'PaymentMode'}>
               <Link to={'/payment/mode'} />
-              Payment Mode
+              <Translator path="navigation.menu.paymentMode"/>
             </Menu.Item>
             <Menu.Item key={'Role'}>
               <Link to={'/role'} />
-              Role
+              <Translator path="navigation.menu.role"/>
             </Menu.Item>
           </SubMenu>
         </Menu>

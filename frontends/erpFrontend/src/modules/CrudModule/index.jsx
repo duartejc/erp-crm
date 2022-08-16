@@ -117,7 +117,7 @@ function CrudModule({ config, createForm, updateForm }) {
 
   useLayoutEffect(() => {
     dispatch(crud.resetState());
-  }, []);
+  }, [dispatch]);
 
   return (
     <CrudLayout

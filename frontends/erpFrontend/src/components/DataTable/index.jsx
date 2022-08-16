@@ -7,6 +7,7 @@ import { crud } from '@/redux/crud/actions';
 import { selectListItems } from '@/redux/crud/selectors';
 
 import uniqueId from '@/utils/uinqueId';
+import Translator from '../I18n/Translator';
 
 export default function DataTable({ config, DropDownRowMenu, AddNewItem }) {
   let { entity, dataTableColumns, dataTableTitle } = config;
@@ -32,11 +33,11 @@ export default function DataTable({ config, DropDownRowMenu, AddNewItem }) {
   const handelDataTableLoad = useCallback((pagination) => {
     const options = { page: pagination.current || 1 };
     dispatch(crud.list({ entity, options }));
-  }, []);
+  }, [dispatch, entity]);
 
   useEffect(() => {
     dispatch(crud.list({ entity }));
-  }, []);
+  }, [dispatch, entity]);
 
   return (
     <>
@@ -46,7 +47,7 @@ export default function DataTable({ config, DropDownRowMenu, AddNewItem }) {
         ghost={false}
         extra={[
           <Button onClick={handelDataTableLoad} key={`${uniqueId()}`}>
-            Refresh
+            <Translator path="components.datatable.refresh"/>
           </Button>,
           <AddNewItem key={`${uniqueId()}`} config={config} />,
         ]}

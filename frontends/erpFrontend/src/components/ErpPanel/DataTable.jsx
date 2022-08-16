@@ -10,6 +10,7 @@ import { useErpContext } from '@/context/erp';
 import uniqueId from '@/utils/uinqueId';
 
 import { RedoOutlined, PlusOutlined } from '@ant-design/icons';
+import Translator from '../I18n/Translator';
 function AddNewItem({ config }) {
   const { ADD_NEW_ENTITY } = config;
   const { erpContextAction } = useErpContext();
@@ -66,7 +67,7 @@ export default function DataTable({ config, DataTableDropMenu }) {
         ghost={true}
         extra={[
           <Button onClick={handelDataTableLoad} key={`${uniqueId()}`} icon={<RedoOutlined />}>
-            Refresh
+            <Translator path="components.datatable.refresh"/>
           </Button>,
           // <Button onClick={handelCurrency} key={`${uniqueId()}`} icon={<RedoOutlined />}>
           //   Change Currency

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import App from './app';
 import './style/app.less';
+import './i18n'
 import * as serviceWorker from './serviceWorker';
 
 import { Router as RouterHistory } from 'react-router-dom';

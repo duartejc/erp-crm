@@ -15,6 +15,7 @@ import photo from '@/style/images/photo.png';
 import { logout } from '@/redux/auth/actions';
 import history from '@/utils/history';
 import uniqueId from '@/utils/uinqueId';
+import Flag from '@/components/I18n/Flag';
 
 export default function HeaderContent() {
   const dispatch = useDispatch();
@@ -74,6 +75,7 @@ export default function HeaderContent() {
   );
   return (
     <div className="headerIcon" style={{ position: 'absolute', right: 0, zIndex: '99' }}>
+      <Flag/>
       <Dropdown overlay={profileDropdown} trigger={['click']} placement="bottomRight">
         {/* <Badge dot> */}
         <Avatar className="last" src={photo} />

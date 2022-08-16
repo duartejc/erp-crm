@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { Tag } from 'antd';
 import InvoiceModule from '@/modules/InvoiceModule';
 import { useMoney } from '@/settings';
+import Translator from '@/components/I18n/Translator';
 
 export default function Invoice() {
   const { moneyRowFormatter } = useMoney();
@@ -19,44 +20,45 @@ export default function Invoice() {
       dataIndex: 'number',
     },
     {
-      title: 'Client',
+      title: <Translator path="invoice.list.columns.client"/>,
       dataIndex: ['client', 'company'],
     },
     {
-      title: 'Date',
+      title: <Translator path="invoice.list.columns.creationDate"/>,
       dataIndex: 'date',
       render: (date) => {
         return dayjs(date).format('DD/MM/YYYY');
       },
     },
     {
-      title: 'Due date',
+      title: <Translator path="invoice.list.columns.dueDate"/>,
       dataIndex: 'expiredDate',
       render: (date) => {
         return dayjs(date).format('DD/MM/YYYY');
       },
     },
     {
-      title: 'Total',
+      title: <Translator path="invoice.list.columns.total"/>,
       dataIndex: 'total',
       render: (amount) => moneyRowFormatter({ amount }),
     },
     {
-      title: 'Balance',
+      title: <Translator path="invoice.list.columns.balance"/>,
       dataIndex: 'credit',
       render: (amount) => moneyRowFormatter({ amount }),
     },
     {
-      title: 'status',
+      title: <Translator path="invoice.list.columns.status"/>,
       dataIndex: 'status',
       render: (status) => {
         let color = status === 'draft' ? 'cyan' : status === 'sent' ? 'magenta' : 'gold';
-
-        return <Tag color={color}>{status && status.toUpperCase()}</Tag>;
+        
+        const statusPath = `invoice.list.columns.statusLabel.${status}`;
+        return <Tag color={color}>{status && <Translator path={statusPath} />}</Tag>;
       },
     },
     {
-      title: 'Payment',
+      title: <Translator path="invoice.list.columns.payment"/>,
       dataIndex: 'paymentStatus',
       render: (paymentStatus) => {
         let color =
@@ -68,15 +70,16 @@ export default function Invoice() {
             ? 'red'
             : 'purple';
 
-        return <Tag color={color}>{paymentStatus && paymentStatus.toUpperCase()}</Tag>;
+        const paymentStatusPath = `invoice.list.columns.paymentStatus.${paymentStatus}`;
+        return <Tag color={color}>{paymentStatus && <Translator path={paymentStatusPath} /> }</Tag>;
       },
     },
   ];
 
   const PANEL_TITLE = 'invoice';
-  const dataTableTitle = 'invoices Lists';
-  const ADD_NEW_ENTITY = 'Add new invoice';
-  const DATATABLE_TITLE = 'invoices List';
+  const dataTableTitle = <Translator path="invoice.list.title"/>;
+  const ADD_NEW_ENTITY = <Translator path="invoice.list.add"/>;
+  const DATATABLE_TITLE = <Translator path="invoice.list.title"/>;
   const ENTITY_NAME = 'invoice';
   const CREATE_ENTITY = 'Save invoice';
   const UPDATE_ENTITY = 'Update invoice';
